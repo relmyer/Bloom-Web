@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #11212D;
+    color: #CCD0CF;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #06141B;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    margin: 10px 0 0;
+    font-size: 1.2em;
+    color: #9BA8AB;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    color: #A5C6A;
+}
+
+#video-chat-container {
+    margin-top: 10px;
+}
+
+#start-call {
+    background-color: #253745;
+    color: #CCD0CF;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#todo-list {
+    margin-top: 20px;
+}
+
+#todo-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+#todo-items li {
+    background-color: #253745;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#new-item {
+    width: calc(100% - 100px);
+    padding: 10px;
+    margin-right: 10px;
+}
+
+#add-item {
+    background-color: #4A5C6A;
+    color: #CCD0CF;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
