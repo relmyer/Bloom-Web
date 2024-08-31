@@ -1,4 +1,4 @@
-# Bloom-App
+# Bloom-Website
 Building a Collaborative Study Website: A Beginner's Journey
 I am currently working on creating a website focused on collaborative study sessions. The site will allow users to form study groups, collaborate in real-time, and track their progress together. The theme and name of the site have already been decided, and I am passionate about bringing this idea to life.
 
