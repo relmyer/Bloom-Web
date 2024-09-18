@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom - Birlikte Büyüyelim</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Bloom</h1>
+        <p>Birlikte büyüyün, birlikte öğrenin: Bloom ile çalışma deneyiminizi dönüştürün.</p>
+
+        <!-- Kullanıcı Kayıt Bölümü -->
+        <div id="kullanici-kayit">
+            <h3>Hesap Oluştur</h3>
+            <form id="kayit-formu">
+                <label for="kullanici-adi">Kullanıcı Adı:</label>
+                <input type="text" id="kullanici-adi" required>
+
+                <label for="email">E-posta:</label>
+                <input type="email" id="email" required>
+
+                <label for="sifre">Şifre:</label>
+                <input type="password" id="sifre" required>
+
+                <button type="submit">Hesap Oluştur</button>
+            </form>
+
+            <div id="avatar-secimi" style="display:none;">
+                <h4>Bir Avatar Seçin</h4>
+                <div class="avatar-secenekler">
+                    <label>
+                        <input type="radio" name="avatar" value="cicek1" required>
+                        <img src="cicek1.png" alt="Çiçek Avatar 1">
+                    </label>
+                    <label>
+                        <input type="radio" name="avatar" value="cicek2">
+                        <img src="cicek2.png" alt="Çiçek Avatar 2">
+                    </label>
+                    <label>
+                        <input type="radio" name="avatar" value="cicek3">
+                        <img src="cicek3.png" alt="Çiçek Avatar 3">
+                    </label>
+                </div>
+                <button id="avatar-onayla">Avatari Onayla</button>
+            </div>
+
+            <p id="dogrulama-mesaji" style="display:none;">E-posta adresinize bir doğrulama kodu gönderildi.</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Ana içerik (Çalışma Grupları, Odak Zamanlayıcı vb.) buraya gelecek -->
+        <section id="study-groups">
+            <h2>Çalışma Grupları</h2>
+            <p>Gruplar oluşturun, arkadaşlarınızı ekleyin ve birlikte çalışın.</p>
+        </section>
+
+        <section id="video-chat">
+            <h2>Video Sohbet</h2>
+            <p>Birlikte çalışmak için video ve sesli sohbet başlatın.</p>
+            <div id="video-chat-container">
+                <button id="start-call">Görüşmeyi Başlat</button>
+            </div>
+        </section>
+
+        <section id="todo-list">
+            <h2>Yapılacaklar Listesi</h2>
+            <p>Görevlerinizi yönetin ve çalışma hedeflerinizi takip edin.</p>
+            <ul id="todo-items">
+                <li>Matematik çalış</li>
+                <li>Edebiyat oku</li>
+            </ul>
+            <input type="text" id="new-item" placeholder="Yeni bir görev ekleyin">
+            <button id="add-item">Ekle</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Bloom. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        // Kullanıcı oluşturma formu gönderildiğinde
+        document.getElementById('kayit-formu').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const kullaniciAdi = document.getElementById('kullanici-adi').value;
+            const email = document.getElementById('email').value;
+            const sifre = document.getElementById('sifre').value;
+
+            // Mail doğrulama simülasyonu
+            if (kullaniciAdi && email && sifre) {
+                // Doğrulama kodu mesajı göster
+                document.getElementById('dogrulama-mesaji').style.display = 'block';
+
+                // Kullanıcı kaydı tamamlandıktan sonra avatar seçimi alanını göster
+                setTimeout(function() {
+                    document.getElementById('avatar-secimi').style.display = 'block';
+                }, 2000);
+            } else {
+                alert("Lütfen tüm alanları doldurun.");
+            }
+
+            // Verileri konsolda göster
+            console.log(`Kullanıcı Adı: ${kullaniciAdi}, E-posta: ${email}, Şifre: ${sifre}`);
+        });
+
+        // Avatar seçimi tamamlandığında
+        document.getElementById('avatar-onayla').addEventListener('click', function() {
+            const secilenAvatar = document.querySelector('input[name="avatar"]:checked');
+            
+            if (secilenAvatar) {
+                // Seçilen avatarı al ve kullan
+                alert(`Seçilen avatar: ${secilenAvatar.value}`);
+                
+                // Gerçek bir sistemde burada avatar kullanıcının profiline kaydedilir
+                console.log(`Seçilen Avatar: ${secilenAvatar.value}`);
+
+                // Kayıt işlemi tamamlandı mesajı veya kullanıcı yönlendirme işlemi
+                alert('Kayıt tamamlandı! Şimdi giriş yapabilirsiniz.');
+            } else {
+                alert("Lütfen bir avatar seçin.");
+            }
+        });
+
+        // To-Do list için item ekleme işlevi
+        document.getElementById('add-item').addEventListener('click', function() {
+            const newItem = document.getElementById('new-item').value;
+            if (newItem) {
+                const listItem = document.createElement('li');
+                listItem.textContent = newItem;
+                document.getElementById('todo-items').appendChild(listItem);
+                document.getElementById('new-item').value = '';  // Input alanını sıfırla
+            } else {
+                alert("Lütfen bir görev ekleyin.");
+            }
+        });
+    </script>
+</body>
+
+</html>
