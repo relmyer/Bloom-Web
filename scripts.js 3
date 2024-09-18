@@ -1,0 +1,59 @@
+// script.js
+
+// Kullanıcı oluşturma formu gönderildiğinde
+document.getElementById('kayit-formu').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const kullaniciAdi = document.getElementById('kullanici-adi').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const sifre = document.getElementById('sifre').value.trim();
+
+    // Alanların doldurulup doldurulmadığını kontrol et
+    if (kullaniciAdi && email && sifre) {
+        // Doğrulama kodu mesajını göster
+        document.getElementById('dogrulama-mesaji').style.display = 'block';
+
+        // Kullanıcı kaydı tamamlandıktan sonra avatar seçimi alanını göster
+        setTimeout(function() {
+            document.getElementById('avatar-secimi').style.display = 'block';
+        }, 2000);
+    } else {
+        alert("Lütfen tüm alanları doldurun.");
+    }
+
+    // Verileri konsolda göster (Gerçek uygulamalarda bu şekilde işlem yapmayın)
+    console.log(`Kullanıcı Adı: ${kullaniciAdi}, E-posta: ${email}, Şifre: ${sifre}`);
+});
+
+// Avatar seçimi tamamlandığında
+document.getElementById('avatar-onayla').addEventListener('click', function() {
+    const secilenAvatar = document.querySelector('input[name="avatar"]:checked');
+    
+    if (secilenAvatar) {
+        // Seçilen avatarı al ve kullan
+        alert(`Seçilen avatar: ${secilenAvatar.value}`);
+        
+        // Gerçek bir sistemde burada avatar kullanıcının profiline kaydedilir
+        console.log(`Seçilen Avatar: ${secilenAvatar.value}`);
+
+        // Kayıt işlemi tamamlandı mesajı veya kullanıcı yönlendirme işlemi
+        alert('Kayıt tamamlandı! Şimdi giriş yapabilirsiniz.');
+
+        // Avatar seçimi ve doğrulama mesajını gizle
+        document.getElementById('avatar-secimi').style.display = 'none';
+        document.getElementById('dogrulama-mesaji').style.display = 'none';
+
+        // Formu sıfırla
+        document.getElementById('kayit-formu').reset();
+    } else {
+        alert("Lütfen bir avatar seçin.");
+    }
+});
+
+// To-Do list için item ekleme işlevi
+document.getElementById('add-item').addEventListener('click', function() {
+    const yeniGorev = document.getElementById('new-item').value.trim();
+    if (yeniGorev) {
+        const listeElemani = document.createElement('li');
+        listeElemani.textContent = yeniGorev;
+        document.
