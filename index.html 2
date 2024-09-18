@@ -1,90 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bloom - Together We Grow</title>
+    <title>Bloom - Birlikte Büyüyelim</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <header>
         <h1>Bloom</h1>
-        <p>Grow together, learn together: Transform your study experience with Bloom.</p>
+        <p>Birlikte büyüyün, birlikte öğrenin: Bloom ile çalışma deneyiminizi dönüştürün.</p>
 
-        <!-- User Registration Section -->
-        <div id="user-registration">
-            <h3>Create an Account</h3>
-            <form id="registration-form">
-                <label for="username">Username:</label>
-                <input type="text" id="username" required>
+        <!-- Kullanıcı Kayıt Bölümü -->
+        <div id="kullanici-kayit">
+            <h3>Hesap Oluştur</h3>
+            <form id="kayit-formu">
+                <label for="kullanici-adi">Kullanıcı Adı:</label>
+                <input type="text" id="kullanici-adi" required>
 
-                <label for="email">Email:</label>
+                <label for="email">E-posta:</label>
                 <input type="email" id="email" required>
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" required>
+                <label for="sifre">Şifre:</label>
+                <input type="password" id="sifre" required>
 
-                <button type="submit">Create Account</button>
+                <button type="submit">Hesap Oluştur</button>
             </form>
 
-            <div id="avatar-selection" style="display:none;">
-                <h4>Select an Avatar</h4>
-                <div class="avatar-options">
+            <div id="avatar-secimi" style="display:none;">
+                <h4>Bir Avatar Seçin</h4>
+                <div class="avatar-secenekler">
                     <label>
-                        <input type="radio" name="avatar" value="flower1" required>
-                        <img src="flower1.png" alt="Flower Avatar 1">
+                        <input type="radio" name="avatar" value="cicek1" required>
+                        <img src="cicek1.png" alt="Çiçek Avatar 1">
                     </label>
                     <label>
-                        <input type="radio" name="avatar" value="flower2">
-                        <img src="flower2.png" alt="Flower Avatar 2">
+                        <input type="radio" name="avatar" value="cicek2">
+                        <img src="cicek2.png" alt="Çiçek Avatar 2">
                     </label>
                     <label>
-                        <input type="radio" name="avatar" value="flower3">
-                        <img src="flower3.png" alt="Flower Avatar 3">
+                        <input type="radio" name="avatar" value="cicek3">
+                        <img src="cicek3.png" alt="Çiçek Avatar 3">
                     </label>
                 </div>
-                <button id="confirm-avatar">Confirm Avatar</button>
+                <button id="avatar-onayla">Avatari Onayla</button>
             </div>
 
-            <p id="verification-message" style="display:none;">A verification code has been sent to your email.</p>
+            <p id="dogrulama-mesaji" style="display:none;">E-posta adresinize bir doğrulama kodu gönderildi.</p>
         </div>
     </header>
 
     <main>
-        <!-- Main content here (Study Groups, Focus Timer, etc.) -->
+        <!-- Ana içerik (Çalışma Grupları, Odak Zamanlayıcı vb.) buraya gelecek -->
     </main>
 
     <footer>
-        <p>&copy; 2024 Bloom. All rights reserved.</p>
+        <p>&copy; 2024 Bloom. Tüm hakları saklıdır.</p>
     </footer>
 
     <script>
-        // Handle registration form submission
-        document.getElementById('registration-form').addEventListener('submit', function(e) {
+        // Kullanıcı oluşturma formu gönderildiğinde
+        document.getElementById('kayit-formu').addEventListener('submit', function(e) {
             e.preventDefault();
-            const username = document.getElementById('username').value;
+
+            const kullaniciAdi = document.getElementById('kullanici-adi').value;
             const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+            const sifre = document.getElementById('sifre').value;
 
-            // Simulate sending a verification email
-            document.getElementById('verification-message').style.display = 'block';
+            // Mail doğrulama simülasyonu
+            if (kullaniciAdi && email && sifre) {
+                // Doğrulama kodu mesajı göster
+                document.getElementById('dogrulama-mesaji').style.display = 'block';
 
-            // After email verification, show avatar selection
-            setTimeout(function() {
-                document.getElementById('avatar-selection').style.display = 'block';
-            }, 2000);
+                // Kullanıcı kaydı tamamlandıktan sonra avatar seçimi alanını göster
+                setTimeout(function() {
+                    document.getElementById('avatar-secimi').style.display = 'block';
+                }, 2000);
+            } else {
+                alert("Lütfen tüm alanları doldurun.");
+            }
 
-            // TODO: Implement real email sending and verification process
-            console.log(`Username: ${username}, Email: ${email}, Password: ${password}`);
+            // Verileri konsolda göster
+            console.log(`Kullanıcı Adı: ${kullaniciAdi}, E-posta: ${email}, Şifre: ${sifre}`);
         });
 
-        // Confirm avatar selection
-        document.getElementById('confirm-avatar').addEventListener('click', function() {
-            const selectedAvatar = document.querySelector('input[name="avatar"]:checked').value;
-            alert(`Avatar selected: ${selectedAvatar}`);
-            // TODO: Save avatar selection to user profile
+        // Avatar seçimi tamamlandığında
+        document.getElementById('avatar-onayla').addEventListener('click', function() {
+            const secilenAvatar = document.querySelector('input[name="avatar"]:checked');
+            
+            if (secilenAvatar) {
+                // Seçilen avatarı al ve kullan
+                alert(`Seçilen avatar: ${secilenAvatar.value}`);
+                
+                // Gerçek bir sistemde burada avatar kullanıcının profiline kaydedilir
+                console.log(`Seçilen Avatar: ${secilenAvatar.value}`);
+
+                // Kayıt işlemi tamamlandı mesajı veya kullanıcı yönlendirme işlemi
+                alert('Kayıt tamamlandı! Şimdi giriş yapabilirsiniz.');
+            } else {
+                alert("Lütfen bir avatar seçin.");
+            }
         });
     </script>
 </body>
