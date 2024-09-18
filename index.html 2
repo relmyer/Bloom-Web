@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom - Together We Grow</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Bloom</h1>
+        <p>Grow together, learn together: Transform your study experience with Bloom.</p>
+
+        <!-- User Registration Section -->
+        <div id="user-registration">
+            <h3>Create an Account</h3>
+            <form id="registration-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+
+                <button type="submit">Create Account</button>
+            </form>
+
+            <div id="avatar-selection" style="display:none;">
+                <h4>Select an Avatar</h4>
+                <div class="avatar-options">
+                    <label>
+                        <input type="radio" name="avatar" value="flower1" required>
+                        <img src="flower1.png" alt="Flower Avatar 1">
+                    </label>
+                    <label>
+                        <input type="radio" name="avatar" value="flower2">
+                        <img src="flower2.png" alt="Flower Avatar 2">
+                    </label>
+                    <label>
+                        <input type="radio" name="avatar" value="flower3">
+                        <img src="flower3.png" alt="Flower Avatar 3">
+                    </label>
+                </div>
+                <button id="confirm-avatar">Confirm Avatar</button>
+            </div>
+
+            <p id="verification-message" style="display:none;">A verification code has been sent to your email.</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Main content here (Study Groups, Focus Timer, etc.) -->
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Bloom. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Handle registration form submission
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Simulate sending a verification email
+            document.getElementById('verification-message').style.display = 'block';
+
+            // After email verification, show avatar selection
+            setTimeout(function() {
+                document.getElementById('avatar-selection').style.display = 'block';
+            }, 2000);
+
+            // TODO: Implement real email sending and verification process
+            console.log(`Username: ${username}, Email: ${email}, Password: ${password}`);
+        });
+
+        // Confirm avatar selection
+        document.getElementById('confirm-avatar').addEventListener('click', function() {
+            const selectedAvatar = document.querySelector('input[name="avatar"]:checked').value;
+            alert(`Avatar selected: ${selectedAvatar}`);
+            // TODO: Save avatar selection to user profile
+        });
+    </script>
+</body>
+
+</html>
